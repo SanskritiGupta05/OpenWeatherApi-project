@@ -65,7 +65,8 @@ function current() {
         fetch(url)
         .then((res) => res.json())
         .then((data) => {
-        
+
+          iconElement.setAttribute("src",`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
           const weatherDescription = data.weather[0].main;
           weather.textContent = weatherDescription;
           
