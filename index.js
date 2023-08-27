@@ -1,12 +1,15 @@
 let apiKey = `474d1614b27a2e3cdb4309eb3876d99a`;
 
 const weather = document.getElementById("weather");
+const windElement = document.getElementById("wind");
+const humidElement = document.getElementById("humidity");
 
 
 document.getElementById('button-addon1').addEventListener('click', current);
 
 document.getElementById('button-addon2').addEventListener('click', search);
 
+let iconElement = document.getElementById('emoji');
 
 function search() {
   let input = document.getElementById("input");
@@ -19,6 +22,7 @@ function search() {
         .then((res) => res.json())
         .then((data) => {
           
+          iconElement.setAttribute("src",`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
 
           cityHeading.innerHTML = city;
   
@@ -38,6 +42,13 @@ function search() {
           }
   
           cel.addEventListener("click", celTemp);
+
+          const windSpeed = data.current.wind_speed; // Access from data.current
+        windElement.innerHTML = windSpeed;
+        
+        const humidity = data.current.humidity; // Access from data.current
+        humidElement.innerHTML = humidity;
+
           
       }).catch((err) => console.log(err))
   
