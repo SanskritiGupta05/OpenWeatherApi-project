@@ -42,13 +42,15 @@ function search() {
           }
   
           cel.addEventListener("click", celTemp);
+          displayForcast();
 
-          const windSpeed = data.current.wind_speed; // Access from data.current
-        windElement.innerHTML = windSpeed;
+        //   const windSpeed = data.wind.speed;
+        // windElement.innerHTML = windSpeed;
         
-        const humidity = data.current.humidity; // Access from data.current
-        humidElement.innerHTML = humidity;
+        // const humidity = data.main.humidity;
+        // humidElement.innerHTML = humidity;
 
+       
           
       }).catch((err) => console.log(err))
   
@@ -65,8 +67,9 @@ function current() {
         fetch(url)
         .then((res) => res.json())
         .then((data) => {
+        
+          
 
-          iconElement.setAttribute("src",`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
           const weatherDescription = data.weather[0].main;
           weather.textContent = weatherDescription;
           
@@ -82,11 +85,45 @@ function current() {
             temp.textContent = celcius;
           }
           cel.addEventListener("click", celTemp);
+
+          displayForcast();
+
       }).catch((err) => console.log(err))
   }
   navigator.geolocation.getCurrentPosition(handlePosition)
 }
 
+// display forcast
+function displayForcast(){
+
+  let forcastElement = document.getElementById("forcast");
+  let days = ["Thu", "Fri", "Sat", "Sun","Mon","Tue"];
+
+  let forcastHTML = `<div class="row">`;
+
+  days.forEach(function (day) {
+    forcastHTML =
+      forcastHTML +
+      `
+      <div class="col-2 text-center">
+        <div style="font-size: 16px; color: #000; opacity: 0.5;" class="weather-forecast-date ">${day}</div>
+        <img
+          src="https://openweathermap.org/img/wn/10d@2x.png"
+          alt=""
+          width="70"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-max"> 18° </span>
+          <span style="font-size: 16px; color: #000; opacity: 0.5;"  class="weather-forecast-temperature-min"> 12° </span>
+        </div>
+      </div>
+  `;
+  });
+
+  forcastHTML = forcastHTML + `</div>`;
+  forcastElement.innerHTML = forcastHTML;
+  console.log(forcastHTML);
+}
 
 
   var myDate = new Date();
