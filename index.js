@@ -1,4 +1,5 @@
 let apiKey = `474d1614b27a2e3cdb4309eb3876d99a`;
+
 let input = document.getElementById("input");
 let iconElement = document.getElementById('emoji');
 
@@ -18,6 +19,8 @@ input.addEventListener("keydown", function(event) {
     search();
   }
 });
+
+
 
 //search function
 function search() {
