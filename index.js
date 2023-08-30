@@ -1,18 +1,27 @@
 let apiKey = `474d1614b27a2e3cdb4309eb3876d99a`;
+let input = document.getElementById("input");
+let iconElement = document.getElementById('emoji');
 
 const weather = document.getElementById("weather");
 const windElement = document.getElementById("wind");
 const humidElement = document.getElementById("humidity");
 
 
-document.getElementById('button-addon1').addEventListener('click', current);
-
 document.getElementById('button-addon2').addEventListener('click', search);
 
-let iconElement = document.getElementById('emoji');
+// on enter, trigger search function.
+input.addEventListener("keydown", function(event) {
+  // Check if the pressed key is the "Enter" key (key code 13)
+  if (event.key === 13) {
+    event.preventDefault(); 
+    search(); // Call the search function
+  }
+});
 
+
+//search function
 function search() {
-  let input = document.getElementById("input");
+
   const city = input.value;
 
   const url1 = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
@@ -56,42 +65,6 @@ function search() {
   
   }
 
-//current temperature
-function current() {
-  function handlePosition(position) {
-    var lat = position.coords.latitude;
-    var lon = position.coords.longitude;
-  
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-  
-        fetch(url)
-        .then((res) => res.json())
-        .then((data) => {
-        
-          
-
-          const weatherDescription = data.weather[0].main;
-          weather.textContent = weatherDescription;
-          
-          const kelvin = data.main.temp;
-  
-          const temp = document.getElementById("temp");
-          const temperature = kelvin - 273.15;
-          const celcius = temperature.toFixed(0);
-          temp.textContent = celcius;
-          
-          //for celcius
-          function celTemp(){
-            temp.textContent = celcius;
-          }
-          cel.addEventListener("click", celTemp);
-
-          displayForcast();
-
-      }).catch((err) => console.log(err))
-  }
-  navigator.geolocation.getCurrentPosition(handlePosition)
-}
 
 // display forcast
 function displayForcast(){
@@ -153,7 +126,6 @@ function displayForcast(){
 
   //Button : to display city name in the heading
   const button = document.getElementById("button-addon2");
-  let input = document.getElementById("input");
   let cityHeading = document.getElementById("city");
 
   function myFunction(){
