@@ -11,13 +11,13 @@ document.getElementById('button-addon2').addEventListener('click', search);
 
 // on enter, trigger search function.
 input.addEventListener("keydown", function(event) {
-  // Check if the pressed key is the "Enter" key (key code 13)
+  console.log("Key pressed:", event.key);
   if (event.key === 13) {
-    event.preventDefault(); 
-    search(); // Call the search function
+    event.preventDefault();
+    console.log("Enter key pressed");
+    search();
   }
 });
-
 
 //search function
 function search() {
