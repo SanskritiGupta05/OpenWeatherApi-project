@@ -1,11 +1,13 @@
-let apiKey = `474d1614b27a2e3cdb4309eb3876d99a`;
+
+
+let apiKey = `cabdbda40038ba7d1165b953b1c7bd6c`;
 
 let input = document.getElementById("input");
 let iconElement = document.getElementById('emoji');
 
 const weather = document.getElementById("weather");
-const windElement = document.getElementById("wind");
-const humidElement = document.getElementById("humidity");
+// const windElement = document.getElementById("wind");
+// const humidElement = document.getElementById("humidity");
 
 
 document.getElementById('button-addon2').addEventListener('click', search);
@@ -54,7 +56,7 @@ function search() {
           }
   
           cel.addEventListener("click", celTemp);
-          displayForcast();
+          displayForcast(data);
 
         //   const windSpeed = data.wind.speed;
         // windElement.innerHTML = windSpeed;
@@ -62,16 +64,31 @@ function search() {
         // const humidity = data.main.humidity;
         // humidElement.innerHTML = humidity;
 
+        getForecast(data.coord);
        
           
       }).catch((err) => console.log(err))
   
   }
 
+function getForecast(coordinates){
+  console.log(coordinates);
+  let apiKey = `cabdbda40038ba7d1165b953b1c7bd6c`;
+
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+  console.log(apiUrl);
+
+  
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then(displayForcast);
+
+}
 
 // display forcast
-function displayForcast(){
-
+function displayForcast(data){
+  console.log(data.daily);
   let forcastElement = document.getElementById("forcast");
   let days = ["Thu", "Fri", "Sat", "Sun","Mon","Tue"];
 
@@ -98,7 +115,6 @@ function displayForcast(){
 
   forcastHTML = forcastHTML + `</div>`;
   forcastElement.innerHTML = forcastHTML;
-  console.log(forcastHTML);
 }
 
 
@@ -151,5 +167,4 @@ function displayForcast(){
 
   far.addEventListener("click", farTemp);
   
-
 
