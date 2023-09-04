@@ -1,3 +1,7 @@
+body{
+    background-image: linear-gradient(to right bottom, #e7e7f9, #eee6f5, #f3e5f0, #f6e5ec, #f6e6e8);
+}
+
 #section{
     margin-top: 20px;
     display: flex;
@@ -34,9 +38,8 @@
     font-size: 60px;
 }
 
-.sec-two-one{
-    padding: 20px 80px 20px 0;
-
+.sec-one-one{
+    padding: 0 200px 0 0;
 }
 
 .sec-two-two{

@@ -6,8 +6,9 @@ let input = document.getElementById("input");
 let iconElement = document.getElementById('emoji');
 
 const weather = document.getElementById("weather");
-// const windElement = document.getElementById("wind");
-// const humidElement = document.getElementById("humidity");
+
+const windElement = document.getElementById("wind");
+const humidElement = document.getElementById("humidity");
 
 
 document.getElementById('button-addon2').addEventListener('click', search);
@@ -56,13 +57,13 @@ function search() {
           }
   
           cel.addEventListener("click", celTemp);
-          displayForcast(data);
+          
 
-        //   const windSpeed = data.wind.speed;
-        // windElement.innerHTML = windSpeed;
+          const windSpeed = data.wind.speed;
+        windElement.innerHTML = windSpeed;
         
-        // const humidity = data.main.humidity;
-        // humidElement.innerHTML = humidity;
+        const humidity = data.main.humidity;
+        humidElement.innerHTML = humidity;
 
         getForecast(data.coord);
        
@@ -133,7 +134,7 @@ function displayForcast(data){
     forcastHTML =
       forcastHTML +
       `
-      <div class="col-2 text-center">
+      <div class="col-2 text-center p-4">
         <div style="font-size: 16px; color: #000; opacity: 0.5;" class="weather-forecast-date ">${formatDay(forecastDay.dt)}</div>
         <img
           src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"

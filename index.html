@@ -18,35 +18,34 @@
             <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
           </div>
 
-        <div class="sec-one">
-            <h1 id="city">Paris, France</h2>
-            <h5><span id="day">Wednesday</span> , <span id="time">12:00</span></h5>
-            <h5 id="weather">Cloudy</h5>
-        </div>
+        <div class="sec-one d-flex flex-row justify-content-between">
 
-        <div class="sec-two">
+            <div class="sec-one-one">
+                <h1 id="city">Paris, France</h2>
+                <h5><span id="day">Wednesday</span> , <span id="time">12:00</span></h5>
+                <h5 id="weather">Cloudy</h5>
+
+                <p >
+                    <h6 style="color: rgb(64, 63, 63);">
+                        Humidity: <span id="humidity"> 85</span>%, 
+                        Wind: <span id="wind">13</span> m/sec</h6>
+                </p>
+            </div>
+
             <div class="sec-two-one">
                 <h1> <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="" id="emoji"> <span id="temp">10</span> </span><sup style="font-size: small; top: -2.5em;"><span id="cel">°C </span> | <span id="far">°F</span> </sup>
                 </h1>
 
             </div>
-            <div class="sec-two-two">
-                <h5>Precipitation: 5% </h5>
-                <h5 id="humidity">Humidity: 82%</h5>
-                <h5 id="wind">Wind: 13 km/h</h5>
+        </div>
 
-                <br>
+        <div class="sec-two">
 
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-primary">Temperature</button>
-                    <button type="button" class="btn btn-primary">Precipitation</button>
-                    <button type="button" class="btn btn-primary">Wind</button>
-                  </div>
-            </div>
+
 
         </div>
 
-        <hr style="margin: 0 0 30px 0; color:darkgray;">
+        <hr style="margin: 0 0 30px 0; color:rgb(60, 59, 59);">
 
         <div class="sec-three" id="forcast">
 
@@ -69,7 +68,7 @@
         </div>
 
     </div>
-    <p><a style="text-decoration: none; color:blue;" href="github.com/SanskritiGupta05/OpenWeatherApi-project">Open-Source code </a> by Sanskriti Gupta (✿◡‿◡)</p>
+    <p><a style="text-decoration: none; color:blue;" href="https://github.com/SanskritiGupta05/OpenWeatherApi-project" target="_blank">Open-Source code </a> by Sanskriti Gupta (✿◡‿◡)</p>
     <span class="badge bg-warning text-dark p-1">Note: The functionality where when we hit enter - the temperature shows, is working on the live server, but when i deploy it on netlify it is not working</span>
 </section>
 
